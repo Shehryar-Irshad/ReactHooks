@@ -1,23 +1,30 @@
 import logo from './logo.svg';
 import './App.css';
+import {useState, useEffect} from "react"
 
 function App() {
+
+   const [count, setcount] = useState(0);
+
+   useEffect(() => {
+    setTimeout(() => {
+      setcount((count) => count + 1);
+    }, 1000);
+  });
+  
+   let handlesubmit = () =>{
+        setcount(count+1);
+   }
+   let handledec = () =>{
+        setcount(count-1);
+   }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        
+       <h3>The count is : {count}</h3>
+       <button onClick={handlesubmit} >Add</button>
+       <button onClick={handledec} >dec</button>
+
     </div>
   );
 }
